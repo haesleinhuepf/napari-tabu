@@ -7,20 +7,20 @@
 [![codecov](https://codecov.io/gh/haesleinhuepf/napari-tabu/branch/master/graph/badge.svg)](https://codecov.io/gh/haesleinhuepf/napari-tabu)
 
 A plugin for handling multiple napari windows
-![](docs/napari-tabu-screencast.gif)
+![](https://github.com/haesleinhuepf/napari-tabu/raw/main/docs/napari-tabu-screencast.gif)
 
 ----------------------------------
 
 ## Usage
 
 To open a new window, first click the menu `Plugins > napari-tabu: open new window`
-![](docs/new_window_menu.png)
+![](https://github.com/haesleinhuepf/napari-tabu/raw/main/docs/new_window_menu.png)
 
 Afterwards, select the layer which should be opened in the new window and click on `Run`:
-![](docs/new_window_dialog.png)
+![](https://github.com/haesleinhuepf/napari-tabu/raw/main/docs/new_window_dialog.png)
 
 When you're done with working with the new window, you can send back the result of your work using the `Send current layer back to main napari` butoon:
-![](docs/send_back.png)
+![](https://github.com/haesleinhuepf/napari-tabu/raw/main/docs/send_back.png)
 
 This [napari] plugin was generated with [Cookiecutter] using with [@napari]'s [cookiecutter-napari-plugin] template.
 
