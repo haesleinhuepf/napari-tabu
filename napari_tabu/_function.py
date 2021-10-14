@@ -22,10 +22,10 @@ def napari_experimental_provide_function():
 # 1.  First example, a simple function that thresholds an image and creates a labels layer
 def open_in_new_window(layer : napari.layers.Layer, napari_viewer:napari.Viewer):
     new_viewer = napari.Viewer()
-    new_viewer.add_layer(layer)
+    from ._dock_widget import SendBackWidget, _add_layer_to_viewer
+    _add_layer_to_viewer(layer, new_viewer)
 
     # add back button to new viewer
-    from ._dock_widget import SendBackWidget
     sbw = SendBackWidget(napari_viewer, new_viewer)
 
     new_viewer.window.add_dock_widget(sbw, area='right',
