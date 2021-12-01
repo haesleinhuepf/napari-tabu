@@ -33,7 +33,7 @@ class SendBackWidget(QWidget):
 def _add_layer_to_viewer(layer: napari.layers.Layer, viewer:napari.Viewer):
     if isinstance(layer, napari.layers.Labels):
         new_layer = viewer.add_labels(
-            np.asarray(layer.data),
+            layer.data,
             opacity=layer.opacity,
             blending=layer.blending,
         )
@@ -44,7 +44,7 @@ def _add_layer_to_viewer(layer: napari.layers.Layer, viewer:napari.Viewer):
         #new_layer.contigous=layer.contigous,
     elif isinstance(layer, napari.layers.Image):
         viewer.add_image(
-            np.asarray(layer.data),
+            layer.data,
             name=layer.name,
             opacity=layer.opacity,
             gamma=layer.gamma,
