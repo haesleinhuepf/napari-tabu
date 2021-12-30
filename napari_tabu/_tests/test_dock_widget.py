@@ -1,18 +1,29 @@
+import numpy as np
+
 import napari_tabu
 import pytest
 
-# this is your plugin name declared in your napari.plugins entry point
-MY_PLUGIN_NAME = "napari-tabu"
-# the name of your widget(s)
-MY_WIDGET_NAMES = ["Send Back Widget"]
 
+def test_something_with_viewer(make_napari_viewer):
 
-@pytest.mark.parametrize("widget_name", MY_WIDGET_NAMES)
-def test_something_with_viewer(widget_name, make_napari_viewer, napari_plugin_manager):
-    napari_plugin_manager.register(napari_tabu, name=MY_PLUGIN_NAME)
     viewer = make_napari_viewer()
     num_dw = len(viewer.window._dock_widgets)
-    viewer.window.add_plugin_dock_widget(
-        plugin_name=MY_PLUGIN_NAME, widget_name=widget_name
+    from napari_tabu._dock_widget import SendBackWidget
+
+    viewer.window.add_dock_widget(
+        SendBackWidget(viewer, viewer)
     )
     assert len(viewer.window._dock_widgets) == num_dw + 1
+
+    from napari_tabu._dock_widget import _add_layer_to_viewer
+
+    image_layer = viewer.add_image(np.random.random((10, 10)))
+    labels_layer = viewer.add_labels(np.random.random((10, 10)).astype(int))
+    points_layer = viewer.add_points(np.random.random((2, 2)))
+    shapes_layer = viewer.add_shapes(np.random.random((2, 2)))
+
+
+    _add_layer_to_viewer(image_layer, viewer)
+    _add_layer_to_viewer(labels_layer, viewer)
+    _add_layer_to_viewer(points_layer, viewer)
+    _add_layer_to_viewer(shapes_layer, viewer)
